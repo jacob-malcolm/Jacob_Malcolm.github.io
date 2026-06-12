@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nei Dan — Projects & Thoughts</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Inter:wght@300;500;700&display=swap');
+
+    :root {
+      --bg: #050510;
+      --fg: #e0e0f0;
+      --accent: #6cf0ff;
+      --accent2: #ff33cc;
+      --card-bg: rgba(255, 255, 255, 0.04);
+      --card-border: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    section {
+      padding: 6rem 2rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    h1, h2 {
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    /* Hero Section */
+    #hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #0a0a1a, #000);
+    }
+
+    #hero canvas {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    #hero-content {
+      position: relative;
+      text-align: center;
+      z-index: 2;
+    }
+
+    #hero h1 {
+      font-size: 2.6rem;
+      color: var(--accent);
+      text-shadow: 0 0 20px var(--accent);
+    }
+
+    #hero p {
+      opacity: 0.7;
+      margin-top: 1rem;
+    }
+
+    /* Card Grid Sections */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: 0.3s ease;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 0 20px rgba(108, 240, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--accent2);
+    }
+
+    /* STEM Section */
+    #stem {
+      max-width: 1100px;
+    }
+
+    @keyframes gradientShift {
+      0%   { background-position: 0% 50%; }
+      50%  { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .stem-title {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .stem-title span {
+      display: inline-block;
+      padding: 0.1em 0.18em;
+      border-radius: 8px;
+      line-height: 1.1;
+      transition: transform 0.2s ease;
+    }
+
+    .stem-title span:hover {
+      transform: translateY(-4px) scale(1.15);
+    }
+
+    /* Kids bubble letters */
+    .stem-title .K  { color: #6cf0ff; background: rgba(108,240,255,0.12); } /* S */
+    .stem-title .I  { color: #ff33cc; background: rgba(255,51,204,0.12); } /* T */
+    .stem-title .D  { color: #ffe066; background: rgba(255,224,102,0.12); } /* E */
+    .stem-title .S  { color: #66ffb2; background: rgba(102,255,178,0.12); } /* M */
+
+    /* "For Chemistry" animated with gradient */
+    .stem-title .For-Chemistry {
+      background: linear-gradient(90deg, #ff6b6b, #ffd93d, #6cf0ff, #a855f7, #ff6b6b);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 6s linear infinite;
+      padding: 0;
+      border-radius: 0;
+      background-color: transparent;
+    }
+
+    .stem-split {
+      display: flex;
+      gap: 3rem;
+      align-items: center;
+      /* flex-wrap: wrap; */
+    }
+
+    .stem-img-wrap {
+      flex: 1;
+      /*min-width: 260px;*/
+      max-width: 460px;
+    }
+
+    .stem-img-wrap img {
+      width: 100%;
+      border-radius: 20px;
+      border: 1px solid rgba(108, 240, 255, 0.25);
+      box-shadow:
+        0 0 24px rgba(108, 240, 255, 0.2),
+        0 0 60px rgba(108, 240, 255, 0.08);
+      display: block;
+    }
+
+    .stem-text {
+      flex: 1;
+      /*min-width: 240px;*/
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      color: #bbb;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    /* About Section */
+    #about {
+      text-align: center;
+      max-width: 800px;
+    }
+
+    #about p {
+      color: #bbb;
+      font-size: 1.1rem;
+      margin-top: 1rem;
+    }
+    
+    .cta-card {
+      text-align: center;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 3rem 2rem;
+    }
+
+    .cta-card h3 {
+      color: var(--accent);
+      font-size: 1.4rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.4;
+    }
+
+    .cta-card p {
+      color: #bbb;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 0.7rem 2rem;
+      border: 1px solid var(--accent);
+      border-radius: 999px;
+      color: var(--accent);
+      font-family: 'Orbitron', sans-serif;
+      font-size: 0.95rem;
+      transition: 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--accent);
+      color: #050510;
+      box-shadow: 0 0 20px rgba(108, 240, 255, 0.4);
+    }
+
+    footer {
+      text-align: center;
+      padding: 3rem 1rem;
+      color: #666;
+      font-size: 0.9rem;
+      border-top: 1px solid var(--card-border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Section -->
+  <section id="hero">
+    <canvas id="jitterbug"></canvas>
+    <div id="hero-content">
+      <h1>Exploring structure, complexity, and emergent systems</h1>
+      <p>A space for ideas, research, experiments, and creation</p>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>LLM Training & Cloud Deployment</h3>
+        <p>Exploring scalable training pipelines and distributed model deployment systems.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Quantum Simulations</h3>
+        <p>Experiments in quantum information, unitary designs, and structured benchmarking systems.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Exploring Biological Data</h3>
+        <p>Computational exploration of structured biological datasets and statistical modeling.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Writing Section -->
+  <section id="writing">
+    <h2>Writing</h2>
+    <div class="grid">
+      <div class="card">
+        <h3>Essays</h3>
+        <p>Philosophy of quantum mechanics and the geometry of thought.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Short Stories</h3>
+        <p>Experimental writing blending physics and metaphysics.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Notes</h3>
+        <p>Fragments of research, ideas, and conceptual sketches.</p>
+      </div>
+      
+      <div class="card">
+        <h3>Media</h3>
+        <p>Talks, videos, and audio expressions.</p>
+      </div>
+    </div>
+  </section>
+
+<!-- STEM -->
+<section id ="stem">
+  <h2 class="stem-title">
+    <span class="K">K</span><span class="I">I</span><span class="D">D</span><span class="S">S</span>
+    <span> </span>
+    <span class="For-Chemistry">For Chemistry</span>
+  </h2>
+
+  <div class="stem-split">
+    <div class="stem-img-wrap"> 
+          <img src="/home/jmalcolm/portfolio-site/Illustration48 (1).gif" alt="STEM Program Image" />
+    </div>
+
+    <div class="stem-text">
+      <p>
+        Teaching STEM concepts early is one of the highest-leverage ways to increase collective intellectual capacity.
+      </p>
+
+      <br />
+
+      <p>
+        When children learn structured models of the world early — chemistry, physics, computation — they build transferable reasoning systems rather than isolated facts.
+      </p>
+
+      <br />
+
+      <p>
+        A chemical equation is the same in every country. This universality makes STEM a rare language of global alignment and cooperation.
+      </p>
+      
+      <p><a href="https://www.kidsforchemistry.com/">Here</a> is the original edition of the project. The next-generation platform is currently under development</p>
+    </div>
+  </div>
+</section>
+
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I have a background in chemical engineering and continue to explore systems, computation, and education through both technical and creative work.</p>
+  </section>
+
+<section id="newsletter">
+  <div class="cta-card">
+    <h3>Interested in future essays, projects, or STEM initiatives?</h3>
+    <p>Updates and a mailing list are coming soon.</p>
+    <a href="mailto:youremail@example.com" class="cta-button">Contact</a>
+  </div>
+</section>
+
+  <footer>
+    © 2026 Jacob Bauldock — Designed with math and light.
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('jitterbug');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // Time parameters (DECLARED ONCE)
+    let t = 0;      // wave + color dynamics
+    let tRot = 0;  // rigid rotation dynamics
+
+    function drawRing(cx, cy, R, separation, phaseOffset, clockwise) {
+      const points = 420;
+      const A = 14;            // wave amplitude
+      const k = 6;             // mode number
+      const tilt = Math.PI * 0.62;
+      const omega = 0.9;       // traveling wave speed
+      const rotationSpeed = 0.30; // constant angular velocity
+      const direction = clockwise ? 1 : -1;
+
+      ctx.beginPath();
+      for (let i = 0; i <= points; i++) {
+        const theta0 = (i / points) * Math.PI * 2;
+
+        // hybrid traveling + standing wave
+        const wave = Math.sin(k * theta0 - omega * t) * Math.cos(0.6 * t);
+        const z = A * wave + separation;
+
+        // rigid-body rotation (decoupled timebase)
+        const theta = theta0 + direction * rotationSpeed * tRot;
+
+        const x = cx + R * Math.cos(theta);
+        const y = cy + R * Math.sin(theta) * Math.cos(tilt) - z * Math.sin(tilt);
+
+        if (i === 0) ctx.moveTo(x, y);
+        else ctx.lineTo(x, y);
+      }
+
+      const hue = (t * 45 + phaseOffset) % 360;
+      ctx.strokeStyle = `hsl(${hue}, 80%, 60%)`;
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const cx = canvas.width / 2;
+      const cy = canvas.height / 2;
+      const R = Math.min(canvas.width, canvas.height) * 0.42;
+      const separation = 250;
+
+      drawRing(cx, cy, R, -separation, 0, true);   // upper ring
+      drawRing(cx, cy, R, separation, 180, true); // lower ring
+
+      t += 0.02;
+      tRot += 0.02;
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  </script>
+</body>
+</html>
