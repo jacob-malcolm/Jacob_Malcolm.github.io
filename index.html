@@ -253,6 +253,54 @@
       font-size: 0.9rem;
       border-top: 1px solid var(--card-border);
     }
+    
+    /* MOBILE RESPONSIVE DESIGN */
+    @media (max-width: 700px) {
+
+    /* Hero text */
+    #hero h1 {
+      font-size: 1.7rem;
+      padding: 0 1rem;
+    }
+
+    #hero p {
+      font-size: 0.9rem;
+      padding: 0 1.5rem;
+    }
+
+
+    /* Sections */
+    section {
+      padding: 3rem 1.2rem;
+    }
+
+
+    /* STEM image + text */
+    .split {
+      flex-direction: column;
+      text-align: center;
+    }
+
+
+    .split img {
+      width: 90%;
+      max-width: 350px;
+      border-radius: 30px;
+    }
+
+
+    /* Project cards */
+    .grid {
+      grid-template-columns: 1fr;
+    }
+
+
+    /* Headings */
+    h2 {
+      font-size: 1.8rem;
+    }
+
+  }
   </style>
 </head>
 <body>
@@ -278,7 +326,7 @@
       
       <div class="card">
         <h3>Quantum Simulations</h3>
-        <p>Experiments in quantum information, black hole dynamics, and structured benchmarking systems.</p>
+        <p>Experiments in quantum information, black hole dynamics, and error correction</p>
       </div>
       
       <div class="card">
@@ -416,7 +464,12 @@
 
       const cx = canvas.width / 2;
       const cy = canvas.height / 2;
-      const R = Math.min(canvas.width, canvas.height) * 0.42;
+      const scale = window.innerWidth < 700 ? 0.28 : 0.42;
+
+      const R = Math.min(
+        canvas.width,
+        canvas.height
+      ) * scale;
       const separation = 250;
 
       drawRing(cx, cy, R, -separation, 0, true);   // upper ring
